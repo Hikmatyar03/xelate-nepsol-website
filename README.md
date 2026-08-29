@@ -1,36 +1,55 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Xelate · Nepsol — Kidney Health Website
 
-## Getting Started
+A premium dual-brand health product website for **Xelate** (advanced kidney health capsules) and **Nepsol** (kidney stone relief sachets), built with Next.js, Tailwind CSS v4, and Framer Motion.
 
-First, run the development server:
+## 🌐 Pages
+
+| Route | Description |
+|---|---|
+| `/` | Home — video hero, product cards, trust bar, FAQ teaser |
+| `/xelate` | Xelate product page — benefits, ingredient placeholder, order form |
+| `/nepsol` | Nepsol product page — 4-pillar benefits, verbatim ingredient table, order form |
+| `/faq` | FAQ — general shipping FAQs + tabbed Xelate/Nepsol accordions |
+
+## ✨ Tech Stack
+
+- **Framework:** Next.js 16 (App Router, Turbopack)
+- **Styling:** Tailwind CSS v4 with custom design tokens
+- **Animations:** Framer Motion
+- **Fonts:** Plus Jakarta Sans (display) + DM Sans (body)
+- **Order Flow:** COD form → WhatsApp pre-fill
+
+## 🎨 Design System
+
+- **Xelate palette:** `#9C2B3A` red · `#045F9E` blue · `#1CA8D9` sky
+- **Nepsol palette:** `#0B5C30` forest · `#2B9E52` green · `#C6333B` red accent
+- **Glass panel system:** `backdrop-filter: blur(20px)` + radial bloom gradients
+- **Canvas:** `#F6F7F5` warm-white (never stark white)
+
+## 🚀 Getting Started
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📋 Open Items (Before Launch)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- [ ] Real prices for both products
+- [ ] Xelate ingredient panel + dosage instructions
+- [ ] Final nav wordmark
+- [ ] Shipping / returns / COD policy text
+- [ ] Contact details (phone, email, address)
+- [ ] Social media links
 
-## Learn More
+## ⚠️ Regulatory Notes
 
-To learn more about Next.js, take a look at the following resources:
+- **Nepsol** — Drap En. No: 00636, manufactured by Silvia Laboratories.
+- Xelate ingredient claims are **intentionally left as placeholders** — no ingredient data was provided. Do not publish without client-confirmed ingredient panel.
+- All copy follows "supports / helps / may" language per DRAP compliance guidance.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+> _Consult your physician before starting any new supplement or treatment._
