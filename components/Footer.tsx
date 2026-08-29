@@ -1,66 +1,77 @@
 import Link from "next/link";
+import { Phone, Mail, MapPin, MessageCircle } from "lucide-react";
 
 export default function Footer() {
   return (
     <footer
       className="w-full"
-      style={{ backgroundColor: "var(--bg-canvas-dark)", borderTop: "1px solid rgba(22,33,28,0.08)" }}
+      style={{
+        backgroundColor: "var(--bg-canvas-dark)",
+        borderTop: "1px solid rgba(22,33,28,0.08)",
+      }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
         {/* Main grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 lg:gap-16">
           {/* Col 1 — Brand */}
           <div>
-            <div className="flex items-center gap-1 mb-4">
+            <div className="flex items-center mb-4">
               <span
-                className="font-display font-bold text-xl"
+                className="font-display font-semibold text-xl tracking-tight"
                 style={{ color: "var(--xelate-red)" }}
               >
                 Xelate
               </span>
-              <span className="text-gray-400 mx-1">·</span>
+              <span className="mx-2.5 h-4 w-px bg-stone-300 inline-block" />
               <span
-                className="font-display font-bold text-xl"
+                className="font-display font-semibold text-xl tracking-tight"
                 style={{ color: "var(--nepsol-green)" }}
               >
                 Nepsol
               </span>
             </div>
-            <p className="text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>
+            <p
+              className="text-sm leading-relaxed"
+              style={{ color: "var(--text-muted)" }}
+            >
               Two precision-formulated kidney health products, made to support your urinary system from daily wellness to targeted stone relief.
             </p>
-            {/* Social placeholders */}
-            <div className="flex gap-3 mt-6">
-              {["F", "IG", "WA"].map((s) => (
-                <a
-                  key={s}
-                  href="#"
-                  aria-label={s === "F" ? "Facebook" : s === "IG" ? "Instagram" : "WhatsApp"}
-                  className="w-9 h-9 rounded-full flex items-center justify-center text-xs font-bold transition-all duration-200 hover:scale-110"
-                  style={{
-                    background: "rgba(22,33,28,0.07)",
-                    color: "var(--text-muted)",
-                  }}
-                >
-                  {s}
-                </a>
-              ))}
+
+            {/* Support channels */}
+            <div className="flex items-center gap-3 mt-6">
+              <a
+                href="https://wa.me/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="WhatsApp Support"
+                className="px-3 py-1.5 rounded-full text-xs font-semibold flex items-center gap-1.5 transition-all duration-200 hover:scale-105 border bg-white/60"
+                style={{
+                  borderColor: "rgba(43,158,82,0.3)",
+                  color: "var(--nepsol-forest)",
+                }}
+              >
+                <MessageCircle className="w-3.5 h-3.5" />
+                <span>WhatsApp Support</span>
+              </a>
             </div>
           </div>
 
           {/* Col 2 — Quick links */}
           <div>
-            <h3 className="text-sm font-semibold uppercase tracking-widest mb-4" style={{ color: "var(--text-muted)" }}>
+            <h3
+              className="text-xs font-bold uppercase tracking-widest mb-4"
+              style={{ color: "var(--text-muted)" }}
+            >
               Quick Links
             </h3>
             <ul className="space-y-2.5">
               {[
                 { label: "Home", href: "/" },
-                { label: "Xelate", href: "/xelate" },
-                { label: "Nepsol", href: "/nepsol" },
-                { label: "FAQ", href: "/faq" },
-                { label: "Buy Xelate", href: "/xelate#buy" },
-                { label: "Buy Nepsol", href: "/nepsol#buy" },
+                { label: "Xelate (Capsules)", href: "/xelate" },
+                { label: "Nepsol (Sachets)", href: "/nepsol" },
+                { label: "Frequently Asked Questions", href: "/faq" },
+                { label: "Order Xelate", href: "/xelate#buy" },
+                { label: "Order Nepsol", href: "/nepsol#buy" },
               ].map((link) => (
                 <li key={link.href}>
                   <Link
@@ -77,13 +88,25 @@ export default function Footer() {
 
           {/* Col 3 — Contact + Regulatory */}
           <div>
-            <h3 className="text-sm font-semibold uppercase tracking-widest mb-4" style={{ color: "var(--text-muted)" }}>
-              Contact
+            <h3
+              className="text-xs font-bold uppercase tracking-widest mb-4"
+              style={{ color: "var(--text-muted)" }}
+            >
+              Contact & Inquiries
             </h3>
-            <ul className="space-y-2.5 text-sm" style={{ color: "var(--text-muted)" }}>
-              <li>[Phone / WhatsApp — placeholder]</li>
-              <li>[Email — placeholder]</li>
-              <li>[Address — placeholder]</li>
+            <ul className="space-y-3 text-sm" style={{ color: "var(--text-muted)" }}>
+              <li className="flex items-center gap-2.5">
+                <Phone className="w-4 h-4 text-stone-400 flex-shrink-0" />
+                <span>[Phone / WhatsApp — placeholder]</span>
+              </li>
+              <li className="flex items-center gap-2.5">
+                <Mail className="w-4 h-4 text-stone-400 flex-shrink-0" />
+                <span>[Email — placeholder]</span>
+              </li>
+              <li className="flex items-start gap-2.5">
+                <MapPin className="w-4 h-4 text-stone-400 flex-shrink-0 mt-0.5" />
+                <span>[Distribution / Office address — placeholder]</span>
+              </li>
             </ul>
 
             <div
@@ -93,7 +116,9 @@ export default function Footer() {
                 borderTop: "1px solid rgba(22,33,28,0.08)",
               }}
             >
-              <p className="font-semibold mb-1">Nepsol — Drap En. No: 00636</p>
+              <p className="font-semibold mb-1 text-stone-600">
+                Nepsol — Drap En. No: 00636
+              </p>
               <p>Manufactured by Silvia Laboratories.</p>
             </div>
           </div>

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Plus } from "lucide-react";
 
 interface FaqItem {
   q: string;
@@ -38,14 +39,15 @@ export default function FaqAccordion({
                 {item.q}
               </span>
               <span
-                className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-white text-sm font-bold mt-0.5 transition-all duration-300"
+                className="flex-shrink-0 w-7 h-7 rounded-full flex items-center justify-center text-sm mt-0.5 transition-all duration-300 border"
                 style={{
-                  backgroundColor: isOpen ? accentColor : "rgba(22,33,28,0.1)",
+                  backgroundColor: isOpen ? accentColor : "rgba(255,255,255,0.8)",
+                  borderColor: isOpen ? accentColor : "rgba(22,33,28,0.12)",
                   color: isOpen ? "white" : "var(--text-muted)",
                   transform: isOpen ? "rotate(45deg)" : "rotate(0deg)",
                 }}
               >
-                +
+                <Plus className="w-4 h-4" />
               </span>
             </button>
 

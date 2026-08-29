@@ -44,16 +44,16 @@ export default function Navbar() {
           <div className="flex items-center justify-between h-16">
             {/* Wordmark */}
             <Link href="/" className="flex items-center gap-2 group">
-              <div className="flex items-center gap-1">
+              <div className="flex items-center">
                 <span
-                  className="font-display font-800 text-lg tracking-tight"
+                  className="font-display font-semibold text-xl tracking-tight"
                   style={{ color: "var(--xelate-red)" }}
                 >
                   Xelate
                 </span>
-                <span className="text-gray-300 font-light mx-0.5">·</span>
+                <span className="mx-2.5 h-4 w-px bg-stone-300 inline-block" />
                 <span
-                  className="font-display font-800 text-lg tracking-tight"
+                  className="font-display font-semibold text-xl tracking-tight"
                   style={{ color: "var(--nepsol-green)" }}
                 >
                   Nepsol
@@ -74,7 +74,7 @@ export default function Navbar() {
                     href={link.href}
                     className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
                       isActive
-                        ? "bg-white/60 text-[var(--text-primary)] shadow-sm"
+                        ? "bg-white/70 text-[var(--text-primary)] shadow-sm"
                         : "text-[var(--text-muted)] hover:text-[var(--text-primary)] hover:bg-white/40"
                     }`}
                   >
@@ -88,10 +88,9 @@ export default function Navbar() {
             <div className="hidden md:flex items-center gap-3">
               <Link
                 href="/xelate#buy"
-                className="px-5 py-2 rounded-full text-sm font-semibold text-white transition-all duration-200 hover:opacity-90 hover:scale-105 active:scale-95"
+                className="px-5 py-2.5 rounded-full text-sm font-semibold text-white transition-all duration-200 hover:opacity-90 hover:scale-105 active:scale-95 shadow-sm"
                 style={{
-                  background:
-                    "linear-gradient(135deg, var(--xelate-red), var(--xelate-blue))",
+                  backgroundColor: "var(--nepsol-forest)",
                 }}
               >
                 Buy Now
@@ -169,10 +168,9 @@ export default function Navbar() {
                 <div className="mt-4 pt-4 border-t border-white/30">
                   <Link
                     href="/xelate#buy"
-                    className="block text-center px-5 py-3 rounded-full text-sm font-semibold text-white transition-all duration-200 hover:opacity-90"
+                    className="block text-center px-5 py-3 rounded-full text-sm font-semibold text-white transition-all duration-200 hover:opacity-90 shadow-sm"
                     style={{
-                      background:
-                        "linear-gradient(135deg, var(--xelate-red), var(--xelate-blue))",
+                      backgroundColor: "var(--nepsol-forest)",
                     }}
                   >
                     Buy Now
