@@ -1,0 +1,278 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600&display=swap');
+
+/* =============================================
+   BRAND DESIGN TOKENS
+   ============================================= */
+:root {
+  /* Xelate — clinical trust, red/blue */
+  --xelate-red: #9C2B3A;
+  --xelate-red-dark: #7A1F2C;
+  --xelate-blue: #045F9E;
+  --xelate-sky: #1CA8D9;
+  --xelate-ink: #1A1A1A;
+
+  /* Nepsol — herbal, natural, green */
+  --nepsol-forest: #0B5C30;
+  --nepsol-green: #2B9E52;
+  --nepsol-green-light: #3DB868;
+  --nepsol-red: #C6333B;
+  --nepsol-ink: #232323;
+
+  /* Shared site-wide neutrals */
+  --bg-canvas: #F6F7F5;
+  --bg-canvas-dark: #EEF0EC;
+  --surface-glass: rgba(255, 255, 255, 0.55);
+  --surface-glass-border: rgba(255, 255, 255, 0.6);
+  --shadow-soft: 0 20px 60px -20px rgba(15, 45, 30, 0.15);
+
+  --text-primary: #16211C;
+  --text-muted: #5C6B63;
+  --text-muted-light: #8A9B93;
+}
+
+/* =============================================
+   TAILWIND v4 THEME EXTENSION
+   ============================================= */
+@theme inline {
+  --color-xelate-red: var(--xelate-red);
+  --color-xelate-red-dark: var(--xelate-red-dark);
+  --color-xelate-blue: var(--xelate-blue);
+  --color-xelate-sky: var(--xelate-sky);
+  --color-xelate-ink: var(--xelate-ink);
+
+  --color-nepsol-forest: var(--nepsol-forest);
+  --color-nepsol-green: var(--nepsol-green);
+  --color-nepsol-green-light: var(--nepsol-green-light);
+  --color-nepsol-red: var(--nepsol-red);
+  --color-nepsol-ink: var(--nepsol-ink);
+
+  --color-bg-canvas: var(--bg-canvas);
+  --color-text-primary: var(--text-primary);
+  --color-text-muted: var(--text-muted);
+
+  --font-display: 'Plus Jakarta Sans', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
+}
+
+/* =============================================
+   BASE
+   ============================================= */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg-canvas);
+  color: var(--text-primary);
+  font-family: 'DM Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+/* =============================================
+   GLASS PANEL SYSTEM
+   ============================================= */
+.glass-panel {
+  background: var(--surface-glass);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--surface-glass-border);
+  box-shadow: var(--shadow-soft);
+}
+
+.glass-panel-heavy {
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  box-shadow: 0 24px 64px -16px rgba(15, 45, 30, 0.18);
+}
+
+.glass-nav {
+  background: rgba(246, 247, 245, 0.8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.glass-nav-scrolled {
+  background: rgba(246, 247, 245, 0.92);
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+  border-bottom: 1px solid rgba(200, 220, 210, 0.4);
+  box-shadow: 0 4px 24px rgba(15, 45, 30, 0.08);
+}
+
+/* =============================================
+   BLOOM RADIAL GRADIENT BACKGROUNDS
+   ============================================= */
+.bloom-xelate {
+  position: relative;
+}
+.bloom-xelate::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 60% at 30% 50%, rgba(156, 43, 58, 0.12) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 50% at 70% 40%, rgba(4, 95, 158, 0.10) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.bloom-nepsol {
+  position: relative;
+}
+.bloom-nepsol::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 65% 65% at 35% 50%, rgba(43, 158, 82, 0.14) 0%, transparent 70%),
+    radial-gradient(ellipse 45% 45% at 75% 35%, rgba(11, 92, 48, 0.10) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* =============================================
+   PILL / BADGE
+   ============================================= */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* =============================================
+   INGREDIENT TABLE
+   ============================================= */
+.ingredient-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-variant-numeric: tabular-nums;
+}
+
+.ingredient-table th {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  padding: 0.5rem 0.75rem;
+  border-bottom: 2px solid currentColor;
+  text-align: left;
+}
+
+.ingredient-table td {
+  padding: 0.625rem 0.75rem;
+  font-size: 0.875rem;
+  border-bottom: 1px solid rgba(0,0,0,0.07);
+}
+
+.ingredient-table tr:last-child td {
+  border-bottom: none;
+}
+
+/* =============================================
+   ANIMATIONS
+   ============================================= */
+@keyframes fadeRise {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slowFloat {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+.animate-fade-rise {
+  animation: fadeRise 0.6s ease-out forwards;
+}
+
+.animate-float {
+  animation: slowFloat 6s ease-in-out infinite;
+}
+
+/* =============================================
+   SCROLLBAR POLISH
+   ============================================= */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-canvas);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(92, 107, 99, 0.3);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(92, 107, 99, 0.5);
+}
+
+/* =============================================
+   FAQ ACCORDION
+   ============================================= */
+.faq-item {
+  border-bottom: 1px solid rgba(22, 33, 28, 0.1);
+}
+
+/* =============================================
+   SUBNAV
+   ============================================= */
+.subnav-link {
+  position: relative;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  padding: 0.5rem 0;
+  transition: color 0.2s ease;
+  white-space: nowrap;
+}
+
+.subnav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  border-radius: 1px;
+  transform: scaleX(0);
+  transition: transform 0.2s ease;
+}
+
+.subnav-link:hover,
+.subnav-link.active {
+  color: var(--text-primary);
+}
+
+.subnav-link:hover::after,
+.subnav-link.active::after {
+  transform: scaleX(1);
+}
