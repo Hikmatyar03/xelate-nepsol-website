@@ -44,6 +44,7 @@ function ScrollReveal({
 const subNavLinks = [
   { label: "Overview", href: "#overview" },
   { label: "Benefits", href: "#benefits" },
+  { label: "Ingredients", href: "#ingredients" },
   { label: "How to Use", href: "#how-to-use" },
   { label: "Buy", href: "#buy" },
   { label: "FAQ", href: "#faq" },
@@ -107,7 +108,7 @@ export default function XelatePage() {
       },
       { rootMargin: "-40% 0px -55% 0px" }
     );
-    ["overview", "benefits", "how-to-use", "buy", "faq"].forEach((id) => {
+    ["overview", "benefits", "ingredients", "how-to-use", "buy", "faq"].forEach((id) => {
       const el = document.getElementById(id);
       if (el) observer.observe(el);
     });
@@ -198,7 +199,7 @@ export default function XelatePage() {
             <div className="flex flex-col sm:flex-row gap-3">
               <a
                 href="#buy"
-                className="px-7 py-3.5 rounded-xl font-semibold text-white text-center transition-all duration-200 hover:opacity-90 hover:scale-[1.02] active:scale-[0.98] shadow-sm flex items-center justify-center gap-2"
+                className="px-7 py-3.5 rounded-xl font-semibold text-white text-center transition-all duration-200 hover:opacity-95 hover:scale-[1.02] active:scale-[0.98] shadow-sm flex items-center justify-center gap-2"
                 style={{ backgroundColor: "var(--xelate-red)" }}
               >
                 <span>Buy Now</span>
@@ -206,9 +207,9 @@ export default function XelatePage() {
               </a>
               <a
                 href="#benefits"
-                className="px-7 py-3.5 rounded-xl font-semibold text-center transition-all duration-200 hover:scale-[1.02]"
+                className="px-7 py-3.5 rounded-xl font-semibold text-center transition-all duration-200 hover:scale-[1.02] border bg-white/60"
                 style={{
-                  border: "1.5px solid var(--xelate-blue)",
+                  borderColor: "var(--xelate-blue)",
                   color: "var(--xelate-blue)",
                 }}
               >
@@ -248,11 +249,11 @@ export default function XelatePage() {
       </section>
 
       {/* ============================================
-          BENEFITS (No Emojis)
+          BENEFITS
           ============================================ */}
       <section
         id="benefits"
-        className="py-20 lg:py-28 px-4 sm:px-6 lg:px-8"
+        className="py-14 sm:py-24 px-4 sm:px-6 lg:px-8"
         style={{ backgroundColor: "var(--bg-canvas)" }}
       >
         <div className="max-w-7xl mx-auto">
@@ -280,30 +281,37 @@ export default function XelatePage() {
               return (
                 <ScrollReveal key={i} delay={i * 0.1}>
                   <div
-                    className="glass-panel rounded-3xl p-7 h-full hover:shadow-xl transition-all duration-300 hover:-translate-y-1 group"
-                    style={{ border: "1px solid rgba(156,43,58,0.1)" }}
+                    className="glass-card h-full flex flex-col justify-between"
+                    style={{ border: "1px solid rgba(156,43,58,0.15)" }}
                   >
-                    <div
-                      className="w-12 h-12 rounded-2xl flex items-center justify-center mb-5 transition-transform duration-300 group-hover:scale-105"
-                      style={{
-                        backgroundColor: "rgba(156,43,58,0.1)",
-                        color: "var(--xelate-red)",
-                      }}
-                    >
-                      <Icon className="w-6 h-6" />
+                    <div>
+                      <div className="flex items-center gap-3 mb-5">
+                        <div
+                          className="w-10 h-10 rounded-xl flex items-center justify-center"
+                          style={{
+                            backgroundColor: "rgba(156,43,58,0.1)",
+                            color: "var(--xelate-red)",
+                          }}
+                        >
+                          <Icon className="w-5 h-5" />
+                        </div>
+                        <span className="text-xs font-semibold uppercase tracking-wider text-stone-500">
+                          Benefit 0{i + 1}
+                        </span>
+                      </div>
+                      <h3
+                        className="font-display font-semibold text-lg mb-2"
+                        style={{ color: "var(--xelate-ink)" }}
+                      >
+                        {card.title}
+                      </h3>
+                      <p
+                        className="text-sm leading-relaxed"
+                        style={{ color: "var(--text-muted)" }}
+                      >
+                        {card.desc}
+                      </p>
                     </div>
-                    <h3
-                      className="font-display font-semibold text-lg mb-2"
-                      style={{ color: "var(--xelate-ink)" }}
-                    >
-                      {card.title}
-                    </h3>
-                    <p
-                      className="text-sm leading-relaxed"
-                      style={{ color: "var(--text-muted)" }}
-                    >
-                      {card.desc}
-                    </p>
                   </div>
                 </ScrollReveal>
               );
@@ -313,16 +321,17 @@ export default function XelatePage() {
       </section>
 
       {/* ============================================
-          INGREDIENT PLACEHOLDER PANEL
+          INGREDIENT PLACEHOLDER PANEL (Audit fix)
           ============================================ */}
       <section
-        className="py-16 px-4 sm:px-6 lg:px-8"
+        id="ingredients"
+        className="py-14 sm:py-24 px-4 sm:px-6 lg:px-8"
         style={{ background: "rgba(4,95,158,0.03)" }}
       >
         <div className="max-w-2xl mx-auto">
           <ScrollReveal>
             <div
-              className="rounded-3xl p-8 sm:p-10"
+              className="glass-card"
               style={{
                 border: "2px dashed rgba(4,95,158,0.3)",
                 backgroundColor: "rgba(255,255,255,0.75)",
@@ -330,7 +339,7 @@ export default function XelatePage() {
             >
               {/* Supplement facts header */}
               <div
-                className="border-b-4 pb-2 mb-4"
+                className="border-b-4 pb-3 mb-6"
                 style={{ borderColor: "var(--xelate-ink)" }}
               >
                 <p
@@ -339,7 +348,7 @@ export default function XelatePage() {
                 >
                   Supplement Facts
                 </p>
-                <p className="text-xs mt-0.5" style={{ color: "var(--text-muted)" }}>
+                <p className="text-xs mt-1 text-stone-600">
                   Serving Size: 1 Capsule · Servings per bottle: 30
                 </p>
               </div>
@@ -361,11 +370,12 @@ export default function XelatePage() {
                 </div>
               </div>
 
+              {/* Inaccurate FDA boilerplate removed per Audit */}
               <p
-                className="text-xs italic text-center mt-2"
+                className="text-xs italic text-center mt-3 pt-3 border-t border-stone-200/60"
                 style={{ color: "var(--text-muted-light)" }}
               >
-                * Percent Daily Values are based on a 2,000 calorie diet.<br />† Daily Value not established.
+                Values per capsule — to be confirmed.
               </p>
             </div>
           </ScrollReveal>
@@ -373,11 +383,11 @@ export default function XelatePage() {
       </section>
 
       {/* ============================================
-          HOW TO USE (No Emojis)
+          HOW TO USE
           ============================================ */}
       <section
         id="how-to-use"
-        className="py-20 lg:py-28 px-4 sm:px-6 lg:px-8"
+        className="py-14 sm:py-24 px-4 sm:px-6 lg:px-8"
         style={{ backgroundColor: "var(--bg-canvas)" }}
       >
         <div className="max-w-3xl mx-auto">
@@ -389,7 +399,7 @@ export default function XelatePage() {
                 backgroundColor: "rgba(4,95,158,0.08)",
               }}
             >
-              Usage
+              Directions
             </p>
             <h2
               className="text-3xl md:text-4xl font-display font-semibold tracking-tight"
@@ -401,10 +411,10 @@ export default function XelatePage() {
 
           <ScrollReveal delay={0.1}>
             <div
-              className="glass-panel rounded-3xl p-8 sm:p-10"
-              style={{ border: "1px solid rgba(156,43,58,0.1)" }}
+              className="glass-card"
+              style={{ border: "1px solid rgba(156,43,58,0.15)" }}
             >
-              <div className="flex flex-col sm:flex-row gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
                 {[
                   {
                     step: "01",
@@ -421,29 +431,28 @@ export default function XelatePage() {
                 ].map((s) => {
                   const Icon = s.icon;
                   return (
-                    <div key={s.step} className="flex-1 text-center">
-                      <div
-                        className="w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-4"
-                        style={{
-                          backgroundColor: "rgba(156,43,58,0.1)",
-                          color: "var(--xelate-red)",
-                        }}
-                      >
-                        <Icon className="w-7 h-7" />
-                      </div>
-                      <div
-                        className="font-display font-bold text-3xl mb-1"
-                        style={{ color: "rgba(156,43,58,0.2)" }}
-                      >
-                        {s.step}
+                    <div key={s.step} className="text-left">
+                      <div className="flex items-center gap-3 mb-4">
+                        <div
+                          className="w-12 h-12 rounded-xl flex items-center justify-center"
+                          style={{
+                            backgroundColor: "rgba(156,43,58,0.1)",
+                            color: "var(--xelate-red)",
+                          }}
+                        >
+                          <Icon className="w-6 h-6" />
+                        </div>
+                        <span className="font-display font-bold text-2xl text-stone-300">
+                          {s.step}
+                        </span>
                       </div>
                       <h4
-                        className="font-semibold text-base mb-2"
+                        className="font-semibold text-base mb-1.5"
                         style={{ color: "var(--xelate-ink)" }}
                       >
                         {s.title}
                       </h4>
-                      <p className="text-sm" style={{ color: "var(--text-muted)" }}>
+                      <p className="text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>
                         {s.desc}
                       </p>
                     </div>
@@ -469,7 +478,7 @@ export default function XelatePage() {
           ============================================ */}
       <section
         id="buy"
-        className="py-20 lg:py-28 px-4 sm:px-6 lg:px-8"
+        className="py-14 sm:py-24 px-4 sm:px-6 lg:px-8"
         style={{
           background:
             "linear-gradient(135deg, rgba(156,43,58,0.05) 0%, rgba(4,95,158,0.06) 100%)",
@@ -493,14 +502,14 @@ export default function XelatePage() {
               Get Xelate Delivered
             </h2>
             <p className="mt-3 text-sm" style={{ color: "var(--text-muted)" }}>
-              Cash on Delivery · Free order confirmation via WhatsApp
+              Cash on Delivery · Direct order confirmation via WhatsApp
             </p>
           </ScrollReveal>
 
           <ScrollReveal delay={0.1}>
             <div
-              className="glass-panel rounded-3xl p-8 sm:p-10"
-              style={{ border: "1px solid rgba(156,43,58,0.12)" }}
+              className="glass-card"
+              style={{ border: "1px solid rgba(156,43,58,0.15)" }}
             >
               <OrderForm
                 productName="Xelate (30 Capsules)"
@@ -517,7 +526,7 @@ export default function XelatePage() {
           ============================================ */}
       <section
         id="faq"
-        className="py-20 lg:py-28 px-4 sm:px-6 lg:px-8"
+        className="py-14 sm:py-24 px-4 sm:px-6 lg:px-8"
         style={{ backgroundColor: "var(--bg-canvas)" }}
       >
         <div className="max-w-3xl mx-auto">
@@ -541,8 +550,8 @@ export default function XelatePage() {
 
           <ScrollReveal delay={0.1}>
             <div
-              className="glass-panel rounded-3xl p-8 sm:p-10"
-              style={{ border: "1px solid rgba(156,43,58,0.1)" }}
+              className="glass-card p-6 sm:p-8"
+              style={{ border: "1px solid rgba(156,43,58,0.15)" }}
             >
               <FaqAccordion items={xelateFaq} accentColor="var(--xelate-red)" />
               <div

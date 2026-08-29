@@ -23,7 +23,7 @@
   --bg-canvas: #F6F7F5;
   --bg-canvas-dark: #EEF0EC;
   --surface-glass: rgba(255, 255, 255, 0.55);
-  --surface-glass-border: rgba(255, 255, 255, 0.6);
+  --surface-glass-border: rgba(255, 255, 255, 0.5);
   --shadow-soft: 0 20px 60px -20px rgba(15, 45, 30, 0.15);
 
   --text-primary: #16211C;
@@ -56,7 +56,7 @@
 }
 
 /* =============================================
-   BASE
+   BASE TYPOGRAPHY & SPACING
    ============================================= */
 *, *::before, *::after {
   box-sizing: border-box;
@@ -70,6 +70,8 @@ body {
   background-color: var(--bg-canvas);
   color: var(--text-primary);
   font-family: 'Switzer', sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -77,18 +79,63 @@ body {
 h1, h2, h3, h4, h5, h6 {
   font-family: 'General Sans', sans-serif;
   font-weight: 600;
+}
+
+h1 {
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
   line-height: 1.05;
   letter-spacing: -0.02em;
 }
 
+h2 {
+  font-size: clamp(1.875rem, 3.5vw, 2.75rem);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+
+h3 {
+  font-size: clamp(1.25rem, 2vw, 1.375rem);
+  line-height: 1.25;
+}
+
+.label-eyebrow {
+  font-family: 'Switzer', sans-serif;
+  font-size: 0.78125rem; /* 12.5px */
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.tabular-figure {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum";
+}
+
 /* =============================================
-   GLASS PANEL SYSTEM
+   GLASS CARD RECIPE (Prompt 10)
    ============================================= */
+.glass-card {
+  background: var(--surface-glass);
+  backdrop-filter: blur(20px) saturate(140%);
+  -webkit-backdrop-filter: blur(20px) saturate(140%);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 20px;
+  box-shadow: var(--shadow-soft);
+  padding: 32px;
+  transition: transform 250ms ease-out, box-shadow 250ms ease-out;
+}
+
+.glass-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 24px 64px -16px rgba(15, 45, 30, 0.22);
+}
+
 .glass-panel {
   background: var(--surface-glass);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid var(--surface-glass-border);
+  backdrop-filter: blur(20px) saturate(140%);
+  -webkit-backdrop-filter: blur(20px) saturate(140%);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 20px;
   box-shadow: var(--shadow-soft);
 }
 
@@ -100,31 +147,23 @@ h1, h2, h3, h4, h5, h6 {
   box-shadow: 0 20px 60px -20px rgba(0, 0, 0, 0.35);
 }
 
-.glass-panel-heavy {
-  background: rgba(255, 255, 255, 0.72);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  border: 1px solid rgba(255, 255, 255, 0.75);
-  box-shadow: 0 24px 64px -16px rgba(15, 45, 30, 0.18);
-}
-
 .glass-nav {
   background: rgba(246, 247, 245, 0.8);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px) saturate(140%);
+  -webkit-backdrop-filter: blur(20px) saturate(140%);
   border-bottom: 1px solid rgba(255, 255, 255, 0.5);
 }
 
 .glass-nav-scrolled {
-  background: rgba(246, 247, 245, 0.92);
-  backdrop-filter: blur(30px);
-  -webkit-backdrop-filter: blur(30px);
+  background: rgba(246, 247, 245, 0.94);
+  backdrop-filter: blur(24px) saturate(140%);
+  -webkit-backdrop-filter: blur(24px) saturate(140%);
   border-bottom: 1px solid rgba(200, 220, 210, 0.4);
   box-shadow: 0 4px 24px rgba(15, 45, 30, 0.08);
 }
 
 /* =============================================
-   BLOOM RADIAL GRADIENT BACKGROUNDS
+   RADIAL COLOR BLOOMS
    ============================================= */
 .bloom-xelate {
   position: relative;
@@ -134,10 +173,14 @@ h1, h2, h3, h4, h5, h6 {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse 60% 60% at 30% 50%, rgba(156, 43, 58, 0.12) 0%, transparent 70%),
-    radial-gradient(ellipse 50% 50% at 70% 40%, rgba(4, 95, 158, 0.10) 0%, transparent 70%);
+    radial-gradient(ellipse 65% 65% at 30% 50%, rgba(156, 43, 58, 0.13) 0%, transparent 70%),
+    radial-gradient(ellipse 55% 55% at 70% 40%, rgba(4, 95, 158, 0.11) 0%, transparent 70%);
   pointer-events: none;
   z-index: 0;
+  transition: opacity 250ms ease-out;
+}
+.bloom-xelate:hover::before {
+  opacity: 1.1;
 }
 
 .bloom-nepsol {
@@ -148,10 +191,89 @@ h1, h2, h3, h4, h5, h6 {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse 65% 65% at 35% 50%, rgba(43, 158, 82, 0.14) 0%, transparent 70%),
-    radial-gradient(ellipse 45% 45% at 75% 35%, rgba(11, 92, 48, 0.10) 0%, transparent 70%);
+    radial-gradient(ellipse 70% 70% at 35% 50%, rgba(43, 158, 82, 0.15) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 50% at 75% 35%, rgba(11, 92, 48, 0.12) 0%, transparent 70%);
   pointer-events: none;
   z-index: 0;
+  transition: opacity 250ms ease-out;
+}
+.bloom-nepsol:hover::before {
+  opacity: 1.1;
+}
+
+.bloom-sage {
+  position: relative;
+}
+.bloom-sage::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 60% at 30% 50%, rgba(4, 95, 158, 0.07) 0%, transparent 70%),
+    radial-gradient(ellipse 60% 60% at 70% 50%, rgba(43, 158, 82, 0.07) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* =============================================
+   INPUTS & FORM CONTROLS (Prompt 12)
+   ============================================= */
+.glass-input {
+  background: var(--surface-glass);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  height: 44px;
+  padding: 0 16px;
+  font-size: 0.9375rem;
+  color: var(--text-primary);
+  outline: none;
+  transition: box-shadow 200ms ease, border-color 200ms ease;
+}
+
+.glass-textarea {
+  background: var(--surface-glass);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  padding: 12px 16px;
+  font-size: 0.9375rem;
+  color: var(--text-primary);
+  outline: none;
+  transition: box-shadow 200ms ease, border-color 200ms ease;
+}
+
+/* =============================================
+   FOOTER UNDERLINE SLIDE ANIMATION
+   ============================================= */
+.footer-link {
+  position: relative;
+  display: inline-block;
+  color: var(--text-muted);
+  transition: color 200ms ease;
+}
+
+.footer-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 1.5px;
+  background-color: var(--nepsol-green);
+  transform: scaleX(0);
+  transform-origin: bottom left;
+  transition: transform 220ms ease-out;
+}
+
+.footer-link:hover {
+  color: var(--text-primary);
+}
+
+.footer-link:hover::after {
+  transform: scaleX(1);
 }
 
 /* =============================================
@@ -161,126 +283,11 @@ h1, h2, h3, h4, h5, h6 {
   display: inline-flex;
   align-items: center;
   gap: 0.375rem;
-  padding: 0.25rem 0.75rem;
+  padding: 0.3125rem 0.875rem;
   border-radius: 9999px;
+  font-family: 'Switzer', sans-serif;
   font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-}
-
-/* =============================================
-   INGREDIENT TABLE
-   ============================================= */
-.ingredient-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-variant-numeric: tabular-nums;
-}
-
-.ingredient-table th {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--text-muted);
-  padding: 0.5rem 0.75rem;
-  border-bottom: 2px solid currentColor;
-  text-align: left;
-}
-
-.ingredient-table td {
-  padding: 0.625rem 0.75rem;
-  font-size: 0.875rem;
-  border-bottom: 1px solid rgba(0,0,0,0.07);
-}
-
-.ingredient-table tr:last-child td {
-  border-bottom: none;
-}
-
-/* =============================================
-   ANIMATIONS
-   ============================================= */
-@keyframes fadeRise {
-  from { opacity: 0; transform: translateY(12px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes slowFloat {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-8px); }
-}
-
-@keyframes shimmer {
-  0% { background-position: -200% center; }
-  100% { background-position: 200% center; }
-}
-
-.animate-fade-rise {
-  animation: fadeRise 0.6s ease-out forwards;
-}
-
-.animate-float {
-  animation: slowFloat 6s ease-in-out infinite;
-}
-
-/* =============================================
-   SCROLLBAR POLISH
-   ============================================= */
-::-webkit-scrollbar {
-  width: 6px;
-}
-::-webkit-scrollbar-track {
-  background: var(--bg-canvas);
-}
-::-webkit-scrollbar-thumb {
-  background: rgba(92, 107, 99, 0.3);
-  border-radius: 3px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: rgba(92, 107, 99, 0.5);
-}
-
-/* =============================================
-   FAQ ACCORDION
-   ============================================= */
-.faq-item {
-  border-bottom: 1px solid rgba(22, 33, 28, 0.1);
-}
-
-/* =============================================
-   SUBNAV
-   ============================================= */
-.subnav-link {
-  position: relative;
-  font-size: 0.875rem;
   font-weight: 500;
-  color: var(--text-muted);
-  padding: 0.5rem 0;
-  transition: color 0.2s ease;
-  white-space: nowrap;
-}
-
-.subnav-link::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 2px;
-  border-radius: 1px;
-  transform: scaleX(0);
-  transition: transform 0.2s ease;
-}
-
-.subnav-link:hover,
-.subnav-link.active {
-  color: var(--text-primary);
-}
-
-.subnav-link:hover::after,
-.subnav-link.active::after {
-  transform: scaleX(1);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }

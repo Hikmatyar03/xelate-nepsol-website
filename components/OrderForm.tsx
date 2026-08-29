@@ -41,8 +41,8 @@ export default function OrderForm({
   if (submitted) {
     return (
       <div
-        className="rounded-3xl p-8 sm:p-10 text-center glass-panel"
-        style={{ borderColor: `${primaryColor}30` }}
+        className="glass-card text-center p-8 sm:p-10"
+        style={{ borderColor: `${primaryColor}40` }}
       >
         <div
           className="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4"
@@ -56,8 +56,11 @@ export default function OrderForm({
         >
           Order Details Sent!
         </h3>
-        <p className="text-sm max-w-md mx-auto leading-relaxed" style={{ color: "var(--text-muted)" }}>
-          WhatsApp has opened with your order summary pre-filled. Send the message to confirm your order with our team.
+        <p
+          className="text-base max-w-md mx-auto leading-relaxed"
+          style={{ color: "var(--text-muted)" }}
+        >
+          WhatsApp has opened with your order summary pre-filled. Please tap send to confirm your order directly with our customer support team.
         </p>
         <button
           onClick={() => setSubmitted(false)}
@@ -71,49 +74,42 @@ export default function OrderForm({
   }
 
   return (
-    <form onSubmit={handleCOD} className="space-y-4">
-      {/* Quantity selector */}
+    <form onSubmit={handleCOD} className="space-y-5">
+      {/* Quantity selector (bordered stepper) */}
       <div>
         <label
-          className="block text-sm font-semibold mb-2"
-          style={{ color: "var(--text-primary)" }}
+          className="block text-xs font-semibold uppercase tracking-wider mb-2 text-stone-600"
         >
-          Quantity
+          Select Quantity
         </label>
         <div className="flex items-center gap-3">
-          <button
-            type="button"
-            onClick={() => setQuantity((q) => Math.max(1, q - 1))}
-            className="w-10 h-10 rounded-xl flex items-center justify-center font-bold transition-all hover:scale-105 active:scale-95 border"
-            style={{
-              backgroundColor: `${primaryColor}10`,
-              borderColor: `${primaryColor}25`,
-              color: primaryColor,
-            }}
-            aria-label="Decrease quantity"
+          <div
+            className="inline-flex items-center rounded-xl p-1 border bg-white/60"
+            style={{ borderColor: "rgba(0, 0, 0, 0.1)" }}
           >
-            <Minus className="w-4 h-4" />
-          </button>
-          <span
-            className="w-12 text-center font-bold text-xl font-display tabular-nums"
-            style={{ color: "var(--text-primary)" }}
-          >
-            {quantity}
-          </span>
-          <button
-            type="button"
-            onClick={() => setQuantity((q) => q + 1)}
-            className="w-10 h-10 rounded-xl flex items-center justify-center font-bold transition-all hover:scale-105 active:scale-95 border"
-            style={{
-              backgroundColor: `${primaryColor}10`,
-              borderColor: `${primaryColor}25`,
-              color: primaryColor,
-            }}
-            aria-label="Increase quantity"
-          >
-            <Plus className="w-4 h-4" />
-          </button>
-          <span className="text-sm ml-2 font-medium" style={{ color: "var(--text-muted)" }}>
+            <button
+              type="button"
+              onClick={() => setQuantity((q) => Math.max(1, q - 1))}
+              className="w-10 h-10 rounded-lg flex items-center justify-center font-bold transition-all hover:bg-black/5 active:scale-95 text-stone-700"
+              aria-label="Decrease quantity"
+            >
+              <Minus className="w-4 h-4" />
+            </button>
+            <span
+              className="w-12 text-center font-bold text-lg font-display tabular-nums text-stone-900"
+            >
+              {quantity}
+            </span>
+            <button
+              type="button"
+              onClick={() => setQuantity((q) => q + 1)}
+              className="w-10 h-10 rounded-lg flex items-center justify-center font-bold transition-all hover:bg-black/5 active:scale-95 text-stone-700"
+              aria-label="Increase quantity"
+            >
+              <Plus className="w-4 h-4" />
+            </button>
+          </div>
+          <span className="text-sm font-medium text-stone-600">
             × {productName}
           </span>
         </div>
@@ -124,10 +120,10 @@ export default function OrderForm({
         className="flex items-center justify-between py-3 px-4 rounded-xl border"
         style={{
           backgroundColor: `${primaryColor}06`,
-          borderColor: `${primaryColor}18`,
+          borderColor: `${primaryColor}20`,
         }}
       >
-        <span className="text-sm font-medium" style={{ color: "var(--text-muted)" }}>
+        <span className="text-xs font-semibold uppercase tracking-wider text-stone-600">
           Price per unit
         </span>
         <span
@@ -142,8 +138,7 @@ export default function OrderForm({
       <div>
         <label
           htmlFor="order-name"
-          className="block text-sm font-semibold mb-1.5"
-          style={{ color: "var(--text-primary)" }}
+          className="block text-xs font-semibold uppercase tracking-wider mb-1.5 text-stone-700"
         >
           Full Name *
         </label>
@@ -154,20 +149,16 @@ export default function OrderForm({
           required
           value={form.name}
           onChange={handleChange}
-          placeholder="e.g. Ali Ahmed"
-          className="w-full px-4 py-3 rounded-xl text-sm outline-none transition-all duration-200 glass-panel border-0"
-          style={
-            {
-              color: "var(--text-primary)",
-              boxShadow: "0 0 0 1px rgba(22,33,28,0.1)",
-            } as React.CSSProperties
-          }
-          onFocus={(e) =>
-            (e.target.style.boxShadow = `0 0 0 2px ${primaryColor}40`)
-          }
-          onBlur={(e) =>
-            (e.target.style.boxShadow = "0 0 0 1px rgba(22,33,28,0.1)")
-          }
+          placeholder="e.g. Tariq Mehmood"
+          className="w-full glass-input"
+          onFocus={(e) => {
+            e.target.style.borderColor = primaryColor;
+            e.target.style.boxShadow = `0 0 0 2px ${primaryColor}30`;
+          }}
+          onBlur={(e) => {
+            e.target.style.borderColor = "rgba(0,0,0,0.1)";
+            e.target.style.boxShadow = "none";
+          }}
         />
       </div>
 
@@ -175,8 +166,7 @@ export default function OrderForm({
       <div>
         <label
           htmlFor="order-phone"
-          className="block text-sm font-semibold mb-1.5"
-          style={{ color: "var(--text-primary)" }}
+          className="block text-xs font-semibold uppercase tracking-wider mb-1.5 text-stone-700"
         >
           Phone / WhatsApp *
         </label>
@@ -188,17 +178,15 @@ export default function OrderForm({
           value={form.phone}
           onChange={handleChange}
           placeholder="+92 3XX XXXXXXX"
-          className="w-full px-4 py-3 rounded-xl text-sm outline-none transition-all duration-200 glass-panel border-0"
-          style={{
-            color: "var(--text-primary)",
-            boxShadow: "0 0 0 1px rgba(22,33,28,0.1)",
+          className="w-full glass-input"
+          onFocus={(e) => {
+            e.target.style.borderColor = primaryColor;
+            e.target.style.boxShadow = `0 0 0 2px ${primaryColor}30`;
           }}
-          onFocus={(e) =>
-            (e.target.style.boxShadow = `0 0 0 2px ${primaryColor}40`)
-          }
-          onBlur={(e) =>
-            (e.target.style.boxShadow = "0 0 0 1px rgba(22,33,28,0.1)")
-          }
+          onBlur={(e) => {
+            e.target.style.borderColor = "rgba(0,0,0,0.1)";
+            e.target.style.boxShadow = "none";
+          }}
         />
       </div>
 
@@ -206,8 +194,7 @@ export default function OrderForm({
       <div>
         <label
           htmlFor="order-address"
-          className="block text-sm font-semibold mb-1.5"
-          style={{ color: "var(--text-primary)" }}
+          className="block text-xs font-semibold uppercase tracking-wider mb-1.5 text-stone-700"
         >
           Delivery Address *
         </label>
@@ -219,17 +206,15 @@ export default function OrderForm({
           value={form.address}
           onChange={handleChange}
           placeholder="House/Street, Area, City, Province"
-          className="w-full px-4 py-3 rounded-xl text-sm outline-none transition-all duration-200 glass-panel border-0 resize-none"
-          style={{
-            color: "var(--text-primary)",
-            boxShadow: "0 0 0 1px rgba(22,33,28,0.1)",
+          className="w-full glass-textarea resize-none"
+          onFocus={(e) => {
+            e.target.style.borderColor = primaryColor;
+            e.target.style.boxShadow = `0 0 0 2px ${primaryColor}30`;
           }}
-          onFocus={(e) =>
-            (e.target.style.boxShadow = `0 0 0 2px ${primaryColor}40`)
-          }
-          onBlur={(e) =>
-            (e.target.style.boxShadow = "0 0 0 1px rgba(22,33,28,0.1)")
-          }
+          onBlur={(e) => {
+            e.target.style.borderColor = "rgba(0,0,0,0.1)";
+            e.target.style.boxShadow = "none";
+          }}
         />
       </div>
 
@@ -237,7 +222,7 @@ export default function OrderForm({
       <div className="flex flex-col sm:flex-row gap-3 pt-2">
         <button
           type="submit"
-          className="flex-1 py-3.5 rounded-xl font-semibold text-white text-sm transition-all duration-200 hover:opacity-95 hover:scale-[1.02] active:scale-[0.98] shadow-sm flex items-center justify-center gap-2"
+          className="w-full sm:flex-1 py-3.5 px-7 rounded-xl font-semibold text-white text-sm transition-all duration-200 hover:opacity-95 hover:scale-[1.01] active:scale-[0.99] shadow-sm flex items-center justify-center gap-2"
           style={{ backgroundColor: primaryColor }}
         >
           <MessageSquare className="w-4 h-4" />
@@ -247,7 +232,7 @@ export default function OrderForm({
           type="button"
           disabled
           title="Payment gateway coming soon"
-          className="flex-1 py-3.5 rounded-xl font-semibold text-sm transition-all duration-200 opacity-50 cursor-not-allowed border"
+          className="w-full sm:flex-1 py-3.5 px-7 rounded-xl font-semibold text-sm transition-all duration-200 opacity-50 cursor-not-allowed border bg-transparent flex items-center justify-center"
           style={{
             borderColor: primaryColor,
             color: primaryColor,
@@ -261,7 +246,7 @@ export default function OrderForm({
         className="text-xs text-center pt-1"
         style={{ color: "var(--text-muted-light)" }}
       >
-        Placing order opens WhatsApp with your order details pre-filled.
+        Submitting opens WhatsApp with your order details pre-formatted.
       </p>
     </form>
   );

@@ -17,7 +17,6 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import FaqAccordion from "@/components/FaqAccordion";
 
-/* ---------- scroll-reveal helper ---------- */
 function ScrollReveal({
   children,
   delay = 0,
@@ -40,7 +39,7 @@ function ScrollReveal({
   );
 }
 
-/* ---------- Trust Badges (Prompt 3B) ---------- */
+/* ---------- Trust Badges ---------- */
 const trustBadges = [
   {
     icon: ShieldCheck,
@@ -50,34 +49,37 @@ const trustBadges = [
   {
     icon: Pill,
     label: "30 Capsules · 10 Sachets",
-    sub: "Two targeted formats",
+    sub: "Two targeted formulas",
   },
   {
     icon: Droplets,
     label: "Physician-Guided Use",
-    sub: "Evidence-based wellness",
+    sub: "Evidence-based health",
   },
 ];
 
-/* ---------- Why-kidney-health icon stats (Lucide icons, no emojis) ---------- */
-const whyCards = [
+/* ---------- Stat Cards (Prompt 11: Ghost line-icon watermark + 2px top border) ---------- */
+const statCards = [
   {
     icon: Activity,
     stat: "2",
     unit: "Kidneys",
-    desc: "Filter your entire blood supply roughly 40 times per day — vital organs with an enormous workload.",
+    desc: "Filter your entire blood supply roughly 40 times per day — vital organs with an enormous continuous workload.",
+    borderColor: "var(--xelate-blue)",
   },
   {
     icon: Droplets,
     stat: "180 L",
     unit: "Daily Filtration",
-    desc: "Your kidneys process approximately 180 litres of blood daily, regulating hydration and removing waste.",
+    desc: "Your kidneys process approximately 180 litres of blood daily, regulating body hydration and removing metabolic waste.",
+    borderColor: "var(--xelate-blue)",
   },
   {
     icon: Users,
     stat: "1 in 10",
     unit: "Adults Affected",
-    desc: "Roughly one in ten adults will experience urinary discomfort or kidney stones during their lifetime.",
+    desc: "Roughly one in ten adults will experience urinary tract complaints or kidney stones during their lifetime.",
+    borderColor: "var(--nepsol-green)",
   },
 ];
 
@@ -112,7 +114,7 @@ export default function HomePage() {
       <Navbar />
 
       {/* ============================================
-          HERO (Prompt 3B Revision)
+          HERO (Prompt 3B)
           ============================================ */}
       <section className="relative min-h-[92vh] flex items-center overflow-hidden">
         {/* Video background */}
@@ -133,27 +135,27 @@ export default function HomePage() {
             <source src="/videos/product-animation.mp4" type="video/mp4" />
           </video>
 
-          {/* Prompt 3B: Vertical gradient only - transparent top 50%, to rgba(8,16,12,0.55) at bottom */}
+          {/* Prompt 3B vertical gradient overlay */}
           <div
             className="absolute inset-0 z-10 pointer-events-none"
             style={{
               background:
-                "linear-gradient(to bottom, rgba(8, 16, 12, 0) 45%, rgba(8, 16, 12, 0.58) 100%)",
+                "linear-gradient(to bottom, rgba(8, 16, 12, 0) 45%, rgba(8, 16, 12, 0.6) 100%)",
             }}
           />
         </div>
 
-        {/* Hero content: Positioned in negative space zone */}
-        <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-28 w-full">
+        {/* Hero content positioned in negative space */}
+        <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32 w-full">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end">
             <motion.div
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1.0] }}
-              className="lg:col-span-7 glass-panel-hero rounded-3xl p-8 sm:p-10"
+              className="lg:col-span-7 glass-panel-hero rounded-3xl p-8 sm:p-12"
             >
               {/* Eyebrow badge */}
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider text-white/90 bg-white/15 border border-white/20 mb-5">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider text-white/95 bg-white/15 border border-white/25 mb-6">
                 <Sparkles className="w-3.5 h-3.5 text-white/80" />
                 <span>Kidney & Urinary Health, Backed by Two Formulas</span>
               </div>
@@ -162,7 +164,7 @@ export default function HomePage() {
                 Two Ways to Protect Your Kidneys
               </h1>
 
-              <p className="text-base sm:text-lg text-white/85 max-w-xl font-normal leading-relaxed mb-8">
+              <p className="text-base sm:text-lg text-white/90 max-w-xl font-normal leading-relaxed mb-8">
                 Xelate supports daily kidney function with a 30-capsule routine.
                 Nepsol targets kidney stone relief with an 8-ingredient herbal sachet formula.
               </p>
@@ -196,7 +198,7 @@ export default function HomePage() {
           TRUST BADGES BAR (Prompt 3B)
           ============================================ */}
       <section
-        className="py-6 px-4 border-b border-stone-200/70"
+        className="py-8 px-4 border-b border-stone-200/70"
         style={{ backgroundColor: "var(--bg-canvas)" }}
       >
         <div className="max-w-7xl mx-auto">
@@ -229,7 +231,7 @@ export default function HomePage() {
           MEET THE PRODUCTS
           ============================================ */}
       <section
-        className="py-20 lg:py-28 px-4 sm:px-6 lg:px-8"
+        className="py-14 sm:py-24 px-4 sm:px-6 lg:px-8"
         style={{ backgroundColor: "var(--bg-canvas)" }}
       >
         <div className="max-w-7xl mx-auto">
@@ -241,7 +243,7 @@ export default function HomePage() {
                 backgroundColor: "rgba(22,33,28,0.06)",
               }}
             >
-              Our Products
+              Our Product Line
             </p>
             <h2
               className="text-3xl md:text-4xl font-display font-semibold tracking-tight"
@@ -255,7 +257,7 @@ export default function HomePage() {
             {/* Xelate card */}
             <ScrollReveal delay={0.1}>
               <div className="bloom-xelate rounded-3xl overflow-hidden h-full">
-                <div className="glass-panel rounded-3xl p-8 sm:p-10 h-full flex flex-col relative z-10 group hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
+                <div className="glass-card h-full flex flex-col relative z-10 group">
                   <div className="flex-1">
                     <div
                       className="pill mb-4"
@@ -309,7 +311,7 @@ export default function HomePage() {
             {/* Nepsol card */}
             <ScrollReveal delay={0.2}>
               <div className="bloom-nepsol rounded-3xl overflow-hidden h-full">
-                <div className="glass-panel rounded-3xl p-8 sm:p-10 h-full flex flex-col relative z-10 group hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
+                <div className="glass-card h-full flex flex-col relative z-10 group">
                   <div className="flex-1">
                     <div
                       className="pill mb-4"
@@ -364,16 +366,13 @@ export default function HomePage() {
       </section>
 
       {/* ============================================
-          WHY KIDNEY HEALTH MATTERS (No Emojis)
+          WHY KIDNEY HEALTH MATTERS (Prompt 11: Ghost watermark icon + 2px top border)
           ============================================ */}
       <section
-        className="py-20 lg:py-28 px-4 sm:px-6 lg:px-8"
-        style={{
-          background:
-            "linear-gradient(135deg, rgba(4,95,158,0.05) 0%, rgba(43,158,82,0.05) 100%)",
-        }}
+        className="py-14 sm:py-24 px-4 sm:px-6 lg:px-8 bloom-sage"
+        style={{ backgroundColor: "var(--bg-canvas)" }}
       >
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-7xl mx-auto relative z-10">
           <ScrollReveal className="text-center mb-14">
             <p
               className="pill mb-3 mx-auto"
@@ -382,7 +381,7 @@ export default function HomePage() {
                 backgroundColor: "rgba(4,95,158,0.08)",
               }}
             >
-              Why It Matters
+              Essential Health
             </p>
             <h2
               className="text-3xl md:text-4xl font-display font-semibold tracking-tight"
@@ -394,37 +393,48 @@ export default function HomePage() {
               className="mt-4 max-w-xl mx-auto text-base"
               style={{ color: "var(--text-muted)" }}
             >
-              Your kidneys work around the clock. Supporting them proactively is one of the most impactful things you can do for long-term wellness.
+              Your kidneys work around the clock. Supporting them proactively is one of the most impactful things you can do for long-term health.
             </p>
           </ScrollReveal>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {whyCards.map((card, i) => {
+            {statCards.map((card, i) => {
               const Icon = card.icon;
               return (
                 <ScrollReveal key={i} delay={i * 0.1}>
-                  <div className="glass-panel rounded-3xl p-8 text-center hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-                    <div className="w-12 h-12 rounded-2xl bg-stone-100/90 flex items-center justify-center mx-auto mb-5 text-stone-700">
-                      <Icon className="w-6 h-6" />
-                    </div>
+                  <div
+                    className="glass-card relative overflow-hidden text-left"
+                    style={{
+                      borderTop: `2px solid ${card.borderColor}`,
+                    }}
+                  >
+                    {/* Faded ghost line-icon background watermark (~8% opacity) */}
                     <div
-                      className="font-display font-semibold text-4xl mb-1 tracking-tight"
-                      style={{ color: "var(--text-primary)" }}
+                      className="absolute -right-4 -bottom-4 text-stone-900 pointer-events-none select-none"
+                      style={{ opacity: 0.08 }}
                     >
-                      {card.stat}
+                      <Icon className="w-36 h-36 stroke-1" />
                     </div>
-                    <div
-                      className="text-xs font-semibold uppercase tracking-widest mb-3"
-                      style={{ color: "var(--text-muted)" }}
-                    >
-                      {card.unit}
+
+                    <div className="relative z-10">
+                      <div
+                        className="font-display font-semibold text-5xl sm:text-6xl mb-1 tracking-tight tabular-figure"
+                        style={{ color: "var(--text-primary)" }}
+                      >
+                        {card.stat}
+                      </div>
+                      <div
+                        className="text-xs font-semibold uppercase tracking-wider mb-4 text-stone-600"
+                      >
+                        {card.unit}
+                      </div>
+                      <p
+                        className="text-sm leading-relaxed"
+                        style={{ color: "var(--text-muted)" }}
+                      >
+                        {card.desc}
+                      </p>
                     </div>
-                    <p
-                      className="text-sm leading-relaxed"
-                      style={{ color: "var(--text-muted)" }}
-                    >
-                      {card.desc}
-                    </p>
                   </div>
                 </ScrollReveal>
               );
@@ -437,7 +447,7 @@ export default function HomePage() {
           FAQ TEASER
           ============================================ */}
       <section
-        className="py-20 lg:py-28 px-4 sm:px-6 lg:px-8"
+        className="py-14 sm:py-24 px-4 sm:px-6 lg:px-8"
         style={{ backgroundColor: "var(--bg-canvas)" }}
       >
         <div className="max-w-3xl mx-auto">
@@ -460,15 +470,15 @@ export default function HomePage() {
           </ScrollReveal>
 
           <ScrollReveal delay={0.1}>
-            <div className="glass-panel rounded-3xl p-8 sm:p-10">
+            <div className="glass-card p-6 sm:p-8">
               <FaqAccordion items={faqTeaser} accentColor="var(--nepsol-green)" />
               <div className="mt-8 text-center">
                 <Link
                   href="/faq"
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-sm transition-all duration-200 hover:opacity-90 hover:scale-105"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-sm transition-all duration-200 hover:opacity-90 hover:scale-105 border bg-white/70"
                   style={{
-                    border: "1.5px solid var(--nepsol-green)",
-                    color: "var(--nepsol-green)",
+                    borderColor: "var(--nepsol-green)",
+                    color: "var(--nepsol-forest)",
                   }}
                 >
                   <span>See All FAQs</span>

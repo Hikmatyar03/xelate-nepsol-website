@@ -246,7 +246,7 @@ export default function NepsolPage() {
             <div className="flex flex-col sm:flex-row gap-3">
               <a
                 href="#buy"
-                className="px-7 py-3.5 rounded-xl font-semibold text-white text-center transition-all duration-200 hover:opacity-90 hover:scale-[1.02] active:scale-[0.98] shadow-sm flex items-center justify-center gap-2"
+                className="px-7 py-3.5 rounded-xl font-semibold text-white text-center transition-all duration-200 hover:opacity-95 hover:scale-[1.02] active:scale-[0.98] shadow-sm flex items-center justify-center gap-2"
                 style={{ backgroundColor: "var(--nepsol-green)" }}
               >
                 <span>Buy Now</span>
@@ -254,9 +254,9 @@ export default function NepsolPage() {
               </a>
               <a
                 href="#benefits"
-                className="px-7 py-3.5 rounded-xl font-semibold text-center transition-all duration-200 hover:scale-[1.02]"
+                className="px-7 py-3.5 rounded-xl font-semibold text-center transition-all duration-200 hover:scale-[1.02] border bg-white/60"
                 style={{
-                  border: "1.5px solid var(--nepsol-forest)",
+                  borderColor: "var(--nepsol-forest)",
                   color: "var(--nepsol-forest)",
                 }}
               >
@@ -296,11 +296,11 @@ export default function NepsolPage() {
       </section>
 
       {/* ============================================
-          BENEFITS — 4 PILLARS (No Emojis)
+          BENEFITS — 4 PILLARS
           ============================================ */}
       <section
         id="benefits"
-        className="py-20 lg:py-28 px-4 sm:px-6 lg:px-8"
+        className="py-14 sm:py-24 px-4 sm:px-6 lg:px-8"
         style={{ backgroundColor: "var(--bg-canvas)" }}
       >
         <div className="max-w-7xl mx-auto">
@@ -312,7 +312,7 @@ export default function NepsolPage() {
                 backgroundColor: "rgba(43,158,82,0.08)",
               }}
             >
-              Benefits
+              Targeted Actions
             </p>
             <h2
               className="text-3xl md:text-4xl font-display font-semibold tracking-tight"
@@ -328,39 +328,46 @@ export default function NepsolPage() {
               return (
                 <ScrollReveal key={i} delay={i * 0.1}>
                   <div
-                    className="glass-panel rounded-3xl p-7 h-full hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+                    className="glass-card h-full flex flex-col justify-between"
                     style={{ border: `1px solid ${pillar.color}25` }}
                   >
-                    <div
-                      className="w-12 h-12 rounded-2xl flex items-center justify-center mb-5"
-                      style={{
-                        backgroundColor: pillar.bgColor,
-                        color: pillar.color,
-                      }}
-                    >
-                      <Icon className="w-6 h-6" />
-                    </div>
-                    <h3
-                      className="font-display font-semibold text-lg mb-4"
-                      style={{ color: pillar.color }}
-                    >
-                      {pillar.title}
-                    </h3>
-                    <ul className="space-y-2.5">
-                      {pillar.items.map((item, j) => (
-                        <li
-                          key={j}
-                          className="flex items-start gap-2.5 text-sm leading-relaxed"
-                          style={{ color: "var(--text-muted)" }}
+                    <div>
+                      <div className="flex items-center gap-3 mb-5">
+                        <div
+                          className="w-10 h-10 rounded-xl flex items-center justify-center"
+                          style={{
+                            backgroundColor: pillar.bgColor,
+                            color: pillar.color,
+                          }}
                         >
-                          <span
-                            className="mt-1.5 flex-shrink-0 w-1.5 h-1.5 rounded-full"
-                            style={{ backgroundColor: pillar.color }}
-                          />
-                          <span>{item}</span>
-                        </li>
-                      ))}
-                    </ul>
+                          <Icon className="w-5 h-5" />
+                        </div>
+                        <span className="text-xs font-semibold uppercase tracking-wider text-stone-500">
+                          Pillar 0{i + 1}
+                        </span>
+                      </div>
+                      <h3
+                        className="font-display font-semibold text-lg mb-4"
+                        style={{ color: pillar.color }}
+                      >
+                        {pillar.title}
+                      </h3>
+                      <ul className="space-y-2.5">
+                        {pillar.items.map((item, j) => (
+                          <li
+                            key={j}
+                            className="flex items-start gap-2.5 text-sm leading-relaxed"
+                            style={{ color: "var(--text-muted)" }}
+                          >
+                            <span
+                              className="mt-1.5 flex-shrink-0 w-1.5 h-1.5 rounded-full"
+                              style={{ backgroundColor: pillar.color }}
+                            />
+                            <span>{item}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
                   </div>
                 </ScrollReveal>
               );
@@ -370,11 +377,11 @@ export default function NepsolPage() {
       </section>
 
       {/* ============================================
-          INGREDIENTS
+          INGREDIENTS (Prompt 11: 4px solid left accent bar + styled label card, non-duplicated header)
           ============================================ */}
       <section
         id="ingredients"
-        className="py-20 lg:py-28 px-4 sm:px-6 lg:px-8"
+        className="py-14 sm:py-24 px-4 sm:px-6 lg:px-8"
         style={{ background: "rgba(11,92,48,0.03)" }}
       >
         <div className="max-w-2xl mx-auto">
@@ -386,7 +393,7 @@ export default function NepsolPage() {
                 backgroundColor: "rgba(11,92,48,0.08)",
               }}
             >
-              Formula
+              Active Formula
             </p>
             <h2
               className="text-3xl md:text-4xl font-display font-semibold tracking-tight"
@@ -394,77 +401,50 @@ export default function NepsolPage() {
             >
               Each Sachet Contains
             </h2>
+            <p className="text-sm mt-2 text-stone-600">
+              Precise herbal extract potencies per 10-sachet carton
+            </p>
           </ScrollReveal>
 
           <ScrollReveal delay={0.1}>
             <div
-              className="glass-panel rounded-3xl overflow-hidden shadow-lg"
-              style={{ border: "1px solid rgba(43,158,82,0.2)" }}
+              className="glass-card relative overflow-hidden p-0 border-l-4"
+              style={{
+                borderLeftColor: "var(--nepsol-forest)",
+                borderTopColor: "rgba(255, 255, 255, 0.6)",
+                borderRightColor: "rgba(255, 255, 255, 0.6)",
+                borderBottomColor: "rgba(255, 255, 255, 0.6)",
+              }}
             >
-              {/* Header */}
-              <div
-                className="px-6 sm:px-8 py-5"
-                style={{
-                  borderBottom: "3px solid var(--nepsol-ink)",
-                  background: "rgba(255,255,255,0.75)",
-                }}
-              >
-                <p
-                  className="font-display font-bold text-xl tracking-tight"
-                  style={{ color: "var(--nepsol-ink)" }}
-                >
-                  Each Sachet Contains
-                </p>
-                <p className="text-xs mt-0.5" style={{ color: "var(--text-muted)" }}>
-                  Nepsol — 10 Sachets per carton
-                </p>
+              {/* Header row in label/eyebrow style */}
+              <div className="px-6 sm:px-8 py-4 border-b border-stone-200/70 bg-stone-50/60 flex items-center justify-between">
+                <span className="label-eyebrow text-stone-600">
+                  Active Pharmaceutical Ingredient
+                </span>
+                <span className="label-eyebrow text-stone-600 text-right">
+                  Amount
+                </span>
               </div>
 
-              {/* Table */}
-              <div className="overflow-x-auto">
-                <table
-                  className="ingredient-table"
-                  style={{ color: "var(--nepsol-ink)" }}
-                >
-                  <thead>
-                    <tr style={{ color: "var(--nepsol-forest)" }}>
-                      <th>Active Pharmaceutical Ingredient</th>
-                      <th style={{ textAlign: "right" }}>Amount</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {ingredients.map((ing, i) => (
-                      <tr
-                        key={i}
-                        className="transition-colors duration-150 hover:bg-green-50/50"
-                      >
-                        <td
-                          className="font-medium"
-                          style={{ color: "var(--nepsol-ink)" }}
-                        >
-                          {ing.name}
-                        </td>
-                        <td
-                          className="text-right font-mono font-semibold"
-                          style={{ color: "var(--nepsol-forest)" }}
-                        >
-                          {ing.amount}
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
+              {/* Rows */}
+              <div className="divide-y divide-stone-200/60">
+                {ingredients.map((ing, i) => (
+                  <div
+                    key={i}
+                    className="px-6 sm:px-8 py-3.5 flex items-center justify-between hover:bg-green-50/30 transition-colors"
+                  >
+                    <span className="text-sm sm:text-base font-normal text-stone-900">
+                      {ing.name}
+                    </span>
+                    <span className="text-sm sm:text-base font-medium tabular-figure text-[var(--nepsol-forest)]">
+                      {ing.amount}
+                    </span>
+                  </div>
+                ))}
               </div>
 
-              {/* DRAP footer */}
-              <div
-                className="px-6 sm:px-8 py-4 text-xs"
-                style={{
-                  borderTop: "1.5px solid rgba(43,158,82,0.15)",
-                  color: "var(--text-muted-light)",
-                  background: "rgba(255,255,255,0.6)",
-                }}
-              >
+              {/* Regulatory strip */}
+              <div className="px-6 sm:px-8 py-4 bg-stone-50/80 border-t border-stone-200/70 text-xs text-stone-500 leading-relaxed tabular-figure">
                 DRAP Registration: Drap En. No: 00636 · Prod. E. No: 006361290453 · Manufactured by Silvia Laboratories
               </div>
             </div>
@@ -473,16 +453,16 @@ export default function NepsolPage() {
       </section>
 
       {/* ============================================
-          INDICATED FOR (No Emojis)
+          INDICATED FOR
           ============================================ */}
       <section
-        className="py-16 px-4 sm:px-6 lg:px-8"
+        className="py-14 sm:py-20 px-4 sm:px-6 lg:px-8"
         style={{ backgroundColor: "var(--bg-canvas)" }}
       >
         <div className="max-w-3xl mx-auto">
           <ScrollReveal>
             <div
-              className="glass-panel rounded-3xl p-8 sm:p-10"
+              className="glass-card"
               style={{ border: "1px solid rgba(198,51,59,0.15)" }}
             >
               <div className="flex items-center gap-3.5 mb-6">
@@ -502,7 +482,7 @@ export default function NepsolPage() {
                   >
                     Clinically Indicated For
                   </h3>
-                  <p className="text-xs" style={{ color: "var(--text-muted)" }}>
+                  <p className="text-xs text-stone-500">
                     As stated on regulatory-approved packaging
                   </p>
                 </div>
@@ -511,8 +491,7 @@ export default function NepsolPage() {
                 {indicatedConditions.map((condition, i) => (
                   <li
                     key={i}
-                    className="flex items-start gap-3 text-sm leading-relaxed"
-                    style={{ color: "var(--text-primary)" }}
+                    className="flex items-start gap-3 text-sm leading-relaxed text-stone-800"
                   >
                     <span
                       className="flex-shrink-0 w-5 h-5 rounded-full flex items-center justify-center text-xs text-white font-bold mt-0.5"
@@ -525,8 +504,7 @@ export default function NepsolPage() {
                 ))}
               </ul>
               <p
-                className="mt-6 text-xs italic"
-                style={{ color: "var(--text-muted-light)" }}
+                className="mt-6 text-xs italic text-stone-500 pt-4 border-t border-stone-200/60"
               >
                 Consult your physician for personalized medical advice.
               </p>
@@ -536,11 +514,11 @@ export default function NepsolPage() {
       </section>
 
       {/* ============================================
-          HOW TO USE (No Emojis)
+          HOW TO USE
           ============================================ */}
       <section
         id="how-to-use"
-        className="py-20 lg:py-28 px-4 sm:px-6 lg:px-8"
+        className="py-14 sm:py-24 px-4 sm:px-6 lg:px-8"
         style={{ background: "rgba(43,158,82,0.04)" }}
       >
         <div className="max-w-3xl mx-auto">
@@ -564,10 +542,10 @@ export default function NepsolPage() {
 
           <ScrollReveal delay={0.1}>
             <div
-              className="glass-panel rounded-3xl p-8 sm:p-10"
+              className="glass-card"
               style={{ border: "1px solid rgba(43,158,82,0.15)" }}
             >
-              <div className="flex flex-col sm:flex-row gap-8">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
                 {[
                   {
                     step: "01",
@@ -584,32 +562,28 @@ export default function NepsolPage() {
                 ].map((s) => {
                   const Icon = s.icon;
                   return (
-                    <div key={s.step} className="flex-1">
-                      <div
-                        className="w-14 h-14 rounded-2xl flex items-center justify-center mb-4"
-                        style={{
-                          backgroundColor: "rgba(43,158,82,0.1)",
-                          color: "var(--nepsol-forest)",
-                        }}
-                      >
-                        <Icon className="w-7 h-7" />
-                      </div>
-                      <div
-                        className="font-display font-bold text-3xl mb-1"
-                        style={{ color: "rgba(43,158,82,0.2)" }}
-                      >
-                        {s.step}
+                    <div key={s.step} className="text-left">
+                      <div className="flex items-center gap-3 mb-4">
+                        <div
+                          className="w-12 h-12 rounded-xl flex items-center justify-center"
+                          style={{
+                            backgroundColor: "rgba(43,158,82,0.1)",
+                            color: "var(--nepsol-forest)",
+                          }}
+                        >
+                          <Icon className="w-6 h-6" />
+                        </div>
+                        <span className="font-display font-bold text-2xl text-stone-300">
+                          {s.step}
+                        </span>
                       </div>
                       <h4
-                        className="font-semibold text-base mb-2"
+                        className="font-semibold text-base mb-1.5"
                         style={{ color: "var(--nepsol-ink)" }}
                       >
                         {s.title}
                       </h4>
-                      <p
-                        className="text-sm leading-relaxed"
-                        style={{ color: "var(--text-muted)" }}
-                      >
+                      <p className="text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>
                         {s.desc}
                       </p>
                     </div>
@@ -619,8 +593,7 @@ export default function NepsolPage() {
 
               {/* Storage */}
               <div
-                className="mt-8 pt-6 flex items-start gap-3.5"
-                style={{ borderTop: "1px solid rgba(43,158,82,0.12)" }}
+                className="mt-8 pt-6 flex items-start gap-3.5 border-t border-stone-200/60"
               >
                 <div className="w-10 h-10 rounded-xl bg-green-50 flex items-center justify-center text-[var(--nepsol-forest)] flex-shrink-0">
                   <Thermometer className="w-5 h-5" />
@@ -630,9 +603,9 @@ export default function NepsolPage() {
                     className="font-semibold text-sm mb-0.5"
                     style={{ color: "var(--nepsol-forest)" }}
                   >
-                    Storage
+                    Storage Instructions
                   </p>
-                  <p className="text-sm" style={{ color: "var(--text-muted)" }}>
+                  <p className="text-sm text-stone-600">
                     Store in a cool, dry place below 30°C. Keep all medicines out of reach of children.
                   </p>
                 </div>
@@ -643,8 +616,7 @@ export default function NepsolPage() {
           {/* Regulatory strip */}
           <ScrollReveal delay={0.2} className="mt-6 text-center">
             <p
-              className="text-xs font-semibold uppercase tracking-widest"
-              style={{ color: "var(--text-muted-light)" }}
+              className="text-xs font-semibold uppercase tracking-widest tabular-figure text-stone-500"
             >
               Drap En. No: 00636 · Manufactured by Silvia Laboratories
             </p>
@@ -657,7 +629,7 @@ export default function NepsolPage() {
           ============================================ */}
       <section
         id="buy"
-        className="py-20 lg:py-28 px-4 sm:px-6 lg:px-8"
+        className="py-14 sm:py-24 px-4 sm:px-6 lg:px-8"
         style={{
           background:
             "linear-gradient(135deg, rgba(11,92,48,0.05) 0%, rgba(43,158,82,0.07) 100%)",
@@ -681,13 +653,13 @@ export default function NepsolPage() {
               Get Nepsol Delivered
             </h2>
             <p className="mt-3 text-sm" style={{ color: "var(--text-muted)" }}>
-              Cash on Delivery · Free order confirmation via WhatsApp
+              Cash on Delivery · Direct order confirmation via WhatsApp
             </p>
           </ScrollReveal>
 
           <ScrollReveal delay={0.1}>
             <div
-              className="glass-panel rounded-3xl p-8 sm:p-10"
+              className="glass-card"
               style={{ border: "1px solid rgba(43,158,82,0.15)" }}
             >
               <OrderForm
@@ -705,7 +677,7 @@ export default function NepsolPage() {
           ============================================ */}
       <section
         id="faq"
-        className="py-20 lg:py-28 px-4 sm:px-6 lg:px-8"
+        className="py-14 sm:py-24 px-4 sm:px-6 lg:px-8"
         style={{ backgroundColor: "var(--bg-canvas)" }}
       >
         <div className="max-w-3xl mx-auto">
@@ -729,8 +701,8 @@ export default function NepsolPage() {
 
           <ScrollReveal delay={0.1}>
             <div
-              className="glass-panel rounded-3xl p-8 sm:p-10"
-              style={{ border: "1px solid rgba(43,158,82,0.12)" }}
+              className="glass-card p-6 sm:p-8"
+              style={{ border: "1px solid rgba(43,158,82,0.15)" }}
             >
               <FaqAccordion items={nepsolFaq} accentColor="var(--nepsol-green)" />
               <div

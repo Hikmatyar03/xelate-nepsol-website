@@ -14,12 +14,12 @@ const xelateFaqs = [
   },
   {
     q: "Who should take Xelate?",
-    a: "[Placeholder — needs physician / client input before publishing]",
+    a: "[[Placeholder — awaiting client / physician input before publishing]]",
     isPlaceholder: true,
   },
   {
     q: "Are there any side effects?",
-    a: "[Placeholder — needs physician / client input before publishing]",
+    a: "[[Placeholder — awaiting client / physician input before publishing]]",
     isPlaceholder: true,
   },
 ];
@@ -56,57 +56,70 @@ export default function FaqTabs() {
 
   return (
     <div>
-      {/* Tab buttons */}
+      {/* Tab switcher */}
       <div
-        className="flex rounded-xl p-1 mb-6 gap-1"
-        style={{ backgroundColor: "rgba(22,33,28,0.06)" }}
+        className="flex rounded-2xl p-1.5 mb-6 gap-1.5 border bg-white/60"
+        style={{ borderColor: "rgba(0,0,0,0.08)" }}
       >
         <button
           onClick={() => setActiveTab("xelate")}
-          className={`flex-1 py-2.5 rounded-lg text-sm font-semibold transition-all duration-200 ${
-            activeTab === "xelate" ? "shadow-sm" : ""
+          className={`flex-1 py-3 px-4 rounded-xl text-sm font-semibold transition-all duration-200 ${
+            activeTab === "xelate" ? "shadow-sm" : "hover:text-stone-900"
           }`}
           style={{
             backgroundColor: activeTab === "xelate" ? "white" : "transparent",
-            color: activeTab === "xelate" ? "var(--xelate-red)" : "var(--text-muted)",
+            color:
+              activeTab === "xelate"
+                ? "var(--xelate-red)"
+                : "var(--text-muted)",
           }}
         >
-          Xelate
+          Xelate (Capsules)
         </button>
         <button
           onClick={() => setActiveTab("nepsol")}
-          className={`flex-1 py-2.5 rounded-lg text-sm font-semibold transition-all duration-200 ${
-            activeTab === "nepsol" ? "shadow-sm" : ""
+          className={`flex-1 py-3 px-4 rounded-xl text-sm font-semibold transition-all duration-200 ${
+            activeTab === "nepsol" ? "shadow-sm" : "hover:text-stone-900"
           }`}
           style={{
             backgroundColor: activeTab === "nepsol" ? "white" : "transparent",
-            color: activeTab === "nepsol" ? "var(--nepsol-green)" : "var(--text-muted)",
+            color:
+              activeTab === "nepsol"
+                ? "var(--nepsol-forest)"
+                : "var(--text-muted)",
           }}
         >
-          Nepsol
+          Nepsol (Sachets)
         </button>
       </div>
 
       {/* Tab content */}
       {activeTab === "xelate" && (
-        <div
-          className="glass-panel rounded-2xl p-8"
-          style={{ border: "1px solid rgba(156,43,58,0.12)" }}
-        >
-          <FaqAccordion items={xelateFaqs} accentColor="var(--xelate-red)" />
+        <div className="bloom-xelate rounded-3xl overflow-hidden">
+          <div
+            className="glass-card p-6 sm:p-8 relative z-10"
+            style={{ border: "1px solid rgba(156,43,58,0.15)" }}
+          >
+            <FaqAccordion items={xelateFaqs} accentColor="var(--xelate-red)" />
+          </div>
         </div>
       )}
       {activeTab === "nepsol" && (
-        <div
-          className="glass-panel rounded-2xl p-8"
-          style={{ border: "1px solid rgba(43,158,82,0.12)" }}
-        >
-          <FaqAccordion items={nepsolFaqs} accentColor="var(--nepsol-green)" />
+        <div className="bloom-nepsol rounded-3xl overflow-hidden">
+          <div
+            className="glass-card p-6 sm:p-8 relative z-10"
+            style={{ border: "1px solid rgba(43,158,82,0.15)" }}
+          >
+            <FaqAccordion items={nepsolFaqs} accentColor="var(--nepsol-green)" />
+          </div>
         </div>
       )}
 
       {/* Disclaimer */}
-      <p className="mt-8 text-xs text-center" style={{ color: "var(--text-muted-light)" }}>
+      <p
+        className="mt-8 text-xs text-center leading-relaxed"
+        style={{ color: "var(--text-muted-light)" }}
+      >
         Consult your physician before starting any new supplement or treatment.
       </p>
     </div>
